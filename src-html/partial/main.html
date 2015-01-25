@@ -1,0 +1,30 @@
+<md-content>
+	<form ng-submit="addEntry()">
+  	<section layout="row" layout-sm="row">
+		    <md-input-container>
+		      <label>Produkt</label>
+		      <input ng-model="entry.name">
+		    </md-input-container>
+		    <md-button class="md-raised md-primary md-default-theme" ng-transclude style="-webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+		    	<span class="ng-scope">dodaj</span>
+		    </md-button>
+  	</section>
+  	</form>
+
+    <md-list>
+      <md-item ng-repeat="entry in entryList | filter: {name: entry.name}">
+        <md-item-content>
+          <div class="md-tile-content">
+            <h3 ng-click="toggleDone(entry)" style="font-size: 160%; {{entry.done ? 'text-decoration: line-through; color: #A0A0A0;' : ''}}">{{entry.name}}</h3>
+          </div>
+          <div class="md-tile-right">
+          	<button class="md-primary md-button md-default-theme" ng-click="remove(entry)">
+          		<span class="ng-scope">X</span>
+          	</button>
+          </div>
+        </md-item-content>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-item>
+    </md-list>
+
+</md-content>
