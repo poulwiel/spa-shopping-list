@@ -1,5 +1,5 @@
-controllers.controller('main', ['$scope', 'objectStorageService',
-    function ($scope, objectStorageService) {
+controllers.controller('main', ['$scope', '$timeout', 'objectStorageService',
+    function ($scope, $timeout, objectStorageService) {
 
 		$scope.addEntry = function() {
 			objectStorageService.addEntry($scope.entry);
@@ -8,7 +8,7 @@ controllers.controller('main', ['$scope', 'objectStorageService',
 
 		$scope.toggleDone = function(entry) {
 			entry.done = !entry.done;
-			objectStorageService.persistEntryList();
+			$timeout(function() { objectStorageService.persistEntryList();}, 200);
 		}
 
 		$scope.remove = function(entry) {
