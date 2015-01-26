@@ -15,3 +15,11 @@ After page is loaded you can:
 
 <h3>Info</h3>
 <p>If you have any questions just ask on twitter -> @poulwiel
+
+<h3>Changes</h3>
+<p>
+<h5>2015-01-26</h5>
+<ul>
+<li>better "done state" transition, after tapping product name it becomes striked instantly, but it goes to the end of the list after small timout.</li>
+</ul>
+</p>
