@@ -1,5 +1,5 @@
-controllers.controller('main', ['$scope', '$timeout', 'objectStorageService',
-    function ($scope, $timeout, objectStorageService) {
+controllers.controller('main', ['$scope', '$timeout', '$mdDialog', 'objectStorageService',
+    function ($scope, $timeout, $mdDialog, objectStorageService) {
 
 		$scope.addEntry = function() {
 			objectStorageService.addEntry($scope.entry);
@@ -25,6 +25,14 @@ controllers.controller('main', ['$scope', '$timeout', 'objectStorageService',
 
 		$scope.init();
 		$scope.entryList = objectStorageService.entryList;
+
+		$scope.showHelp = function(ev) {
+			$mdDialog.show({
+				controller: 'helpController',
+		        templateUrl: 'help.html',
+		        targetEvent: ev
+			});
+		}
 
 	}
 ]);

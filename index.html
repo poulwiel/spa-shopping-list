@@ -11231,9 +11231,21 @@ function generateUUID() {
 };
 
 
+		//help.js
+controllers.controller('helpController', ['$scope', '$mdDialog',
+    function ($scope, $mdDialog) {
+
+		$scope.close = function() {
+			$mdDialog.hide();
+		}
+
+	}
+]);
+
+
 		//main.js
-controllers.controller('main', ['$scope', '$timeout', 'objectStorageService',
-    function ($scope, $timeout, objectStorageService) {
+controllers.controller('main', ['$scope', '$timeout', '$mdDialog', 'objectStorageService',
+    function ($scope, $timeout, $mdDialog, objectStorageService) {
 
 		$scope.addEntry = function() {
 			objectStorageService.addEntry($scope.entry);
@@ -11259,6 +11271,14 @@ controllers.controller('main', ['$scope', '$timeout', 'objectStorageService',
 
 		$scope.init();
 		$scope.entryList = objectStorageService.entryList;
+
+		$scope.showHelp = function(ev) {
+			$mdDialog.show({
+				controller: 'helpController',
+		        templateUrl: 'help.html',
+		        targetEvent: ev
+			});
+		}
 
 	}
 ]);
@@ -18697,6 +18717,10 @@ md-content.demo-source-container > hljs > pre > code.highlight {
     left: 7px;
     color: #ccc;
     font-size: 14px; }
+
+li {
+	margin: 1em;
+}
         </style>
 
     </head>
@@ -18734,7 +18758,36 @@ md-content.demo-source-container > hljs > pre > code.highlight {
       </md-item>
     </md-list>
 
+  	<section layout="row" layout-sm="row">
+	    <md-button 
+	    	class="md-raised md-primary md-default-theme" 
+	    	ng-transclude 
+	    	style="-webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);" 
+	    	flex
+	    	ng-click="showHelp($event)">
+	    	<span class="ng-scope">help</span>
+	    </md-button>
+  	</section>
+
 </md-content>
+        </script>
+        <script type="text/ng-template" id="help.html">
+<md-dialog>
+	<md-content>
+		<h2 class="ng-binding">You can:</h2>
+		<p>
+			<ul>
+				<li>add product to your list by entering it's name into Product field and hitting <b>Enter</b> on keyboard or <b>ADD</b> button</li>
+				<li>toggle the buyed state by tapping on product name, buyed product is grey, striked and on the end of the list</li>
+				<li>remove product by tapping <b>X</b> link on the right of any product</li>
+				<li>search for product by entering it's name into Product field</li>
+			</ul>
+		</p>
+		<button class="md-primary md-button md-default-theme" ng-click="close()">
+			<span class="ng-scope">OK, I've got it!</span>
+		</button>
+	</md-content>
+</md-dialog>
         </script>
   </body>
 </html>
