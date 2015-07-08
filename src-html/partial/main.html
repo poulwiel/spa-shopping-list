@@ -14,9 +14,9 @@
     <md-list>
       <md-list-item ng-repeat="entry in entryList | filter: {name: entry.name}" layout="row" layout-align="space-between center">
           <div ng-click="toggleDone(entry)" style="width: 100%;">
-          <h3 style="font-size: 160%; {{entry.done ? 'text-decoration: line-through; color: #A0A0A0;' : ''}}">{{entry.name}}</h3>
+          <h3 style="{{entry.done ? 'text-decoration: line-through; color: #A0A0A0;' : ''}}">{{entry.name}}</h3>
           </div>
-          <button class="md-primary md-button" ng-click="remove(entry)">X</button>
+          <a class="md-icon-button md-primary md-button" ng-click="remove(entry)">X</a>
           <md-divider ng-if="!$last"></md-divider>
       </md-list-item>
     </md-list>
