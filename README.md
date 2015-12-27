@@ -18,6 +18,11 @@ After page is loaded you can:
 
 <h3>Changes</h3>
 <p>
+<h5>2015-12-27</h5>
+<ul>
+<li>when searching for product to enable it, product text field is now cleared.</li>
+</p>
+<p>
 <h5>2015-01-26</h5>
 <ul>
 <li>better "done state" transition, after tapping product name it becomes striked instantly, but it goes to the end of the list after small timout.</li>
