@@ -8,6 +8,7 @@ controllers.controller('main', ['$scope', '$timeout', '$mdDialog', 'objectStorag
 
 		$scope.toggleDone = function(entry) {
 			entry.done = !entry.done;
+			$scope.entry = ""
 			$timeout(function() { objectStorageService.persistEntryList();}, 200);
 		}
 
